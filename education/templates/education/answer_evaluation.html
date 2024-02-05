@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Answer Evaluation:</h2>
+<p>Your answer: "{{ student_response.student_answer }}"</p>
+<p>Evaluation: "{{ student_response.evaluation }}"</p>
+{% if student_response.score %}
+<p>Score: "{{ student_response.score }}"</p>
+{% endif %}
+<a href="{% url 'submit_topic' %}">Try another topic</a>
+{% endblock %}
