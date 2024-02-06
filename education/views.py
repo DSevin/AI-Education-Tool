@@ -54,8 +54,12 @@ def submit_topic(request):
             topic.save()
             generated_content = generate_content_for_topic(topic.name)
             question_text = generate_question_based_on_context(generated_content)
-            question = Question.objects.create(topic=topic, context=generated_content, question_text=question_text)
-            return redirect('topic_submitted', question_id=question.id)
+            if question_text:  # Check if question_text is not None
+                Question.objects.create(topic=topic, context=generated_content, question_text=question_text)
+                return redirect('topic_submitted')  # Ensure this URL name is correctly defined in urls.py
+            else:
+                # Redirect to the error page with a custom message
+                return render(request, 'education/error.html', {'error': 'Failed to generate a question. Please try again.'})
     else:
         form = TopicForm()
     return render(request, 'education/submit_topic.html', {'form': form})
