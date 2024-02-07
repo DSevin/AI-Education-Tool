@@ -25,7 +25,7 @@ SECRET_KEY = 'jk*nf3tk(a_#6ic!d4h_cjflagk&rx+bjxd)%1rh(m2j3n!_p+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 
 ALLOWED_HOSTS = []
 
